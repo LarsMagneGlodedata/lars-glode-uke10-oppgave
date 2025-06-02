@@ -28,9 +28,68 @@ main {
   min-height: 100vh;
 }
 
+section {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
 /* FOOTER */
 footer {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+form {
+  display: flex;
+  justify-content: center;
+  align-items: end;
+  gap: 10px;
+}
+
+#todoInput {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+#addTodo {
+  background-color: green;
+  color: white;
+}
+
+#todoDisplay {
+  display: flex;
+  justify-content: center;
+  align-items: start;
+  flex-direction: column;
+  width: 80vw;
+}
+
+#todoDisplay li {
+  display: grid;
+  grid-template-columns: 75vw 5vw;
+  width: fit-content;
+  text-decoration: none;
+  border-bottom: 1px solid black;
+  justify-items: center;
+  align-content: center;
+}
+
+#todoDisplay li button {
+  grid-column: 2;
+  background-color: red;
+  color: white;
+  border: none;
+}
+
+.first-color {
+  background-color: #b3b3b3;
+}
+
+.second-color {
+  background-color: #dbdbdb;
 }
