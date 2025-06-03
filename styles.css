@@ -1,9 +1,12 @@
-/* HEADER */
-body {
-  background-image: linear-gradient(aqua, blue);
-  
+* {
+  font-family: cursive;
 }
 
+body {
+  background-image: linear-gradient(aqua, blue);
+}
+
+/* HEADER */
 header {
   display: flex;
   align-items: center;
