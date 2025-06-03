@@ -1,4 +1,9 @@
 /* HEADER */
+body {
+  background-image: linear-gradient(aqua, blue);
+  
+}
+
 header {
   display: flex;
   align-items: center;
@@ -33,6 +38,7 @@ section {
   display: flex;
   align-items: center;
   flex-direction: column;
+  
 }
 
 /* FOOTER */
@@ -49,16 +55,52 @@ form {
   gap: 10px;
 }
 
+label {
+  font-size: x-large;
+}
+
 #todoInput {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  width: 50vw;
+  height: 3em;
+  margin-top: 1em;
+  border: none;
+  border-radius: 15px;
+  background-color: #BCD2EE;
+  text-align: center;
+  transition: 0.25s;
+  font-size: large;
+}
+
+#todoInput:hover {
+  transform: scaleY(1.1);
+  box-shadow: 1px 1px 5px 0;
+}
+
+#todoInput:focus-visible {
+  outline: none;
+  transform: scaleY(1.1);
+  box-shadow: 1px 1px 5px 0;
 }
 
 #addTodo {
-  background-color: green;
-  color: white;
+  background-image: linear-gradient(90deg, rgb(174, 252, 174), rgb(0, 255, 0));
+  color: black;
+  height: 3em;
+  border-radius: 5px;
+  border: none;
+  box-shadow: 0 0 5px 0 green;
+  transition: 0.25s;
+  font-size: large;
+}
+
+#addTodo:hover,
+#addTodo:active {
+  filter: brightness(90%);
+  transform: scale(1.05);
 }
 
 #todoDisplay {
@@ -66,30 +108,52 @@ form {
   justify-content: center;
   align-items: start;
   flex-direction: column;
-  width: 80vw;
+  width: 60vw;
+  padding: 0;
+  row-gap: 0.5em;
 }
 
 #todoDisplay li {
-  display: grid;
-  grid-template-columns: 75vw 5vw;
-  width: fit-content;
+  display: flex;
+  width: 100%;
   text-decoration: none;
-  border-bottom: 1px solid black;
-  justify-items: center;
-  align-content: center;
+  min-height: 3em;
+  font-size: large;
+  border-radius: 5px;
+  overflow: hidden;
+  transition: 0.25s;
+
+}
+
+span {
+  padding: 1em;
+  text-transform: capitalize;
+  transition: 0.3s;
+  width: 100%;
+}
+
+#todoDisplay li:hover {
+  transform: scale(1.01);
+  box-shadow: 1px 1px 5px 0 black;
 }
 
 #todoDisplay li button {
-  grid-column: 2;
-  background-color: red;
+  background-color: green;
   color: white;
   border: none;
+  min-width: 50px;
+  transition: 0.3s;
+  padding: 0.5em;
+}
+
+#todoDisplay li button:hover {
+  filter: brightness(90%);
 }
 
 .first-color {
-  background-color: #b3b3b3;
+  background-color: #80e7fc;
 }
 
 .second-color {
-  background-color: #dbdbdb;
+  background-color: #9df3ec;
 }

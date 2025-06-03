@@ -13,31 +13,46 @@ addTodo.addEventListener('click', function () {
     const todoItem = document.createElement('li')
     const deleteTodo = document.createElement('button')
     const todoText = document.createElement('span')
-    // gir 'deleteTodo' tekst innholdet 'X'
-    deleteTodo.textContent = 'X'
+    // gir 'deleteTodo' tekst innholdet 'Done'
+    deleteTodo.textContent = 'Done'
     // sjekke om todoInput.value er tom. (at du ikkje har skreve nåke i input-felte)
     if (todoInput.value === '') {
         // dont add
     }   else { /* hvis du har skreve nåke så får todoItem tekstinnholde til 
     todoInput verdien (da du har skreve i input-felte), så får todoItem ein button som barn
     og så får 'todoDisplay' 'todoItem' som barn og vises som et li-element på nettsiden.
-    og til slutt tømmes input-felte for innhold (verdi) for å gjøre det enklere å legge til flere ting i listen.*/ 
+    og til slutt tømmes input-felte for innhold (verdi) for å spella å viska ut da forriga du skreiv*/ 
     todoText.textContent = todoInput.value
     todoItem.appendChild(todoText)
     todoItem.appendChild(deleteTodo)
     todoDisplay.appendChild(todoItem)
     todoInput.value = ''
+    // sett stylingen til todoItem sånn at når den blir laga så får den ein height på 0.
+    todoItem.style.minHeight = '0'
+    todoItem.style.height = '0'
     // holder telling på li-element som blir lagt til
     count++
+    // liten timeout sånn at ette elemente er laga så får den stylingen fra css.
+    // sånn at den 'vokse' inn.
+    setTimeout(() => {
+        todoItem.style.minHeight = ''
+        todoItem.style.height = `${todoItem.scrollHeight}px`
+    }, 300);
     }
 
     // deklarere at isClicked er 'false'
     let isClicked = false
 
     // Eventlistner for å slette 'seg selv' når du trykker på X knappen.
+    // Og så blir den minde og så sletta for å få animasjon på at den forsvinne,
+    // samme som at den 'vokse' inn.
     deleteTodo.addEventListener('click', function () {
         if (isClicked) {
-            todoItem.remove()
+            todoItem.style.minHeight = '0'
+            todoItem.style.height = '0'
+            setTimeout(() => {
+                todoItem.remove()
+            }, 300);
         } else {
             // do nothing
         }
@@ -52,15 +67,25 @@ addTodo.addEventListener('click', function () {
         todoItem.classList.add('second-color')
     }
 
-    // høre ette om du trykke på todoItem
+    // høre ette om du trykke på todoText
     todoItem.addEventListener('click', function() {
         // hvis isClicked er false, lag ei linja igjennom teksten og sei i fra at isClicked er true 
         if (!isClicked) {
+            // liten switch på knappen fra (grønn og 'done' tekst) til (rød og 'X' tekst)
+            // sånn at du må 'styrka' den av listo før du kan sletta den.
         todoText.style.textDecoration = 'line-through'
+        todoItem.style.filter = 'brightness(80%)'
+        deleteTodo.style.backgroundColor = 'red'
+        deleteTodo.textContent = 'X'
         isClicked = true
         // hvis isClicked er true, fjern linjo fra teksten hvis du trykke igjen.
+        // hvis du strøk nåke ut med et uhell så kan du trykka på 'todoItem' igjen 
+        // for å gjera om utstrykinge. og så blir knappen tilbake til grønn og 'done' tekst.
         } else if (isClicked) {
             todoText.style.textDecoration = 'none'
+            todoItem.style.filter = ''
+            deleteTodo.style.backgroundColor = 'green'
+            deleteTodo.textContent = 'Done'
             isClicked = false
         }
     })
