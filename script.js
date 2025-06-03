@@ -27,17 +27,29 @@ addTodo.addEventListener('click', function () {
     todoItem.appendChild(deleteTodo)
     todoDisplay.appendChild(todoItem)
     todoInput.value = ''
+    // sett todoItem usynlig mens den rekne ut høgden til elemente sånn at den kan bli henta seinara.
+    // detta for å får rette høgden på lengre teksta på mindre skjerma.
+    todoItem.style.visibility = 'hidden'
+    let itemHeight = todoItem.scrollHeight
     // sett stylingen til todoItem sånn at når den blir laga så får den ein height på 0.
-    todoItem.style.minHeight = '0'
     todoItem.style.height = '0'
+    todoItem.style.minHeight = '0'
     // holder telling på li-element som blir lagt til
     count++
     // liten timeout sånn at ette elemente er laga så får den stylingen fra css.
     // sånn at den 'vokse' inn.
-    setTimeout(() => {
-        todoItem.style.minHeight = ''
-        todoItem.style.height = `${todoItem.scrollHeight}px`
-    }, 300);
+    
+        setTimeout(() => {
+            todoItem.style.visibility = ''
+            todoItem.style.minHeight = ''
+            // gir den ferdig kalkulerte høgden til elemente
+            todoItem.style.height = `${itemHeight}px`
+            setTimeout(() => {
+                // fjerne fastsatt høgde, sånn at height er auto etter at animasjon er ferdig.
+                // for meir responsiv høgde hvis du endre skjerm størrelse etter elemente har komt inn.
+                todoItem.style.height = ''
+            }, 300);
+        }, 250);
     }
 
     // deklarere at isClicked er 'false'
