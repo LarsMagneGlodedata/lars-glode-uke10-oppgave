@@ -86,7 +86,7 @@ addTodo.addEventListener('click', function () {
             // liten switch på knappen fra (grønn og 'done' tekst) til (rød og 'X' tekst)
             // sånn at du må 'styrka' den av listo før du kan sletta den.
         todoText.style.textDecoration = 'line-through'
-        todoItem.style.filter = 'brightness(80%)'
+        todoItem.style.filter = 'brightness(90%)'
         deleteTodo.style.backgroundColor = 'red'
         deleteTodo.textContent = 'X'
         isClicked = true
