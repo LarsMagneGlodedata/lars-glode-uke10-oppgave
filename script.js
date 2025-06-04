@@ -11,6 +11,7 @@ addTodo.addEventListener('click', function () {
     const todoDisplay = document.getElementById('todoDisplay')
     // Lager ein variabel og lager et element i html 
     const todoItem = document.createElement('li')
+    todoItem.classList.add('todoItemClass')
     const deleteTodo = document.createElement('button')
     const todoText = document.createElement('span')
     // gir 'deleteTodo' tekst innholdet 'Done'
@@ -102,4 +103,24 @@ addTodo.addEventListener('click', function () {
         }
     })
 
+// TODO: Style deleteAll button!
+
+    const deleteAll = document.createElement('button')
+    if (count === 1) {
+        deleteAll.classList.add('deleteAll')
+        document.querySelector('form').appendChild(deleteAll)
+    }
+
+    deleteAll.addEventListener('click', () => {
+        event.preventDefault()
+        const allTodoItems = document.querySelectorAll('.todoItemClass')
+        allTodoItems.forEach(item => {
+            item.remove()
+        })
+        count = 0
+        
+        if (count === 0) {
+            deleteAll.remove()
+        }
+    })
 })

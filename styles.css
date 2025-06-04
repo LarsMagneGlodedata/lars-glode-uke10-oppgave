@@ -1,5 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Akaya+Kanadaka&family=Permanent+Marker&family=Syne+Mono&display=swap');
+
 * {
-  font-family: cursive;
+  font-family: "Akaya Kanadaka", system-ui;
 }
 
 body {
@@ -59,7 +61,7 @@ form {
 }
 
 label {
-  font-size: x-large;
+  font-size: xx-large;
 }
 
 #todoInput {
@@ -75,7 +77,7 @@ label {
   background-color: #BCD2EE;
   text-align: center;
   transition: 0.25s;
-  font-size: large;
+  font-size: x-large;
 }
 
 #todoInput:hover {
@@ -97,7 +99,7 @@ label {
   border: none;
   box-shadow: 0 0 5px 0 green;
   transition: 0.25s;
-  font-size: large;
+  font-size: x-large;
   padding: 0 1em;
 }
 
@@ -122,7 +124,7 @@ label {
   width: 100%;
   text-decoration: none;
   min-height: 3em;
-  font-size: large;
+  font-size: x-large;
   border-radius: 5px;
   overflow: hidden;
   transition: 0.25s;
@@ -146,9 +148,10 @@ span {
   background-color: green;
   color: white;
   border: none;
-  min-width: 50px;
+  min-width: 75px;
   transition: 0.3s;
   padding: 0.5em;
+  font-size: x-large;
 }
 
 #todoDisplay li button:hover {
