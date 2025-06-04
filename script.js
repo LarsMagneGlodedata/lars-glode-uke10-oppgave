@@ -2,10 +2,13 @@
 const addTodo = document.getElementById('addTodo')
 // tell kor mange li-element som blir laga.
 let count = 0
+// lage ein deleteAll button og gir den ein class.
+const deleteAll = document.createElement('button')
+deleteAll.textContent = 'Clear List'
 
 // eventlistner som utfører koden som ligg inn i den når den registrere et *klikk*.  
 addTodo.addEventListener('click', function () {
-    event.preventDefault(); // forhindre at nettsio refreshe etter et trykk på Add item knappen
+    event.preventDefault(); // forhindre at nettsio refreshe etter et trykk på addTodo knappen
     // lage ein variabel og hente element fra html
     const todoInput = document.getElementById('todoInput')
     const todoDisplay = document.getElementById('todoDisplay')
@@ -66,11 +69,13 @@ addTodo.addEventListener('click', function () {
             setTimeout(() => {
                 todoItem.remove()
             }, 300);
-        } else {
-            // do nothing
+            // holder telling på li-element som blir fjerna
+            count--
+            // fjerne deleteAll knappen hvis alle li element blir fjerna manuelt.
+            if (count === 0) {
+                deleteAll.remove()
+            }
         }
-    // holder telling på li-element som blir fjerna
-    count--
     })
 
     // gir ein class til oddetall og ein class til partall for å veksle mellom bakgrunnsfarge på kvert li-element.
@@ -103,14 +108,13 @@ addTodo.addEventListener('click', function () {
         }
     })
 
-// TODO: Style deleteAll button!
-
-    const deleteAll = document.createElement('button')
+    
+    // gir deleteAll ein class og legg den til i form elemente når første li element blir laga
     if (count === 1) {
         deleteAll.classList.add('deleteAll')
         document.querySelector('form').appendChild(deleteAll)
     }
-
+    // slette alle li element hvis du trykke på deleteAll knappen, sett count til 0 og så fjerne deleteAll knappen.
     deleteAll.addEventListener('click', () => {
         event.preventDefault()
         const allTodoItems = document.querySelectorAll('.todoItemClass')
