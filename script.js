@@ -118,6 +118,7 @@ addTodo.addEventListener('click', function () {
     deleteAll.addEventListener('click', () => {
         event.preventDefault()
         const allTodoItems = document.querySelectorAll('.todoItemClass')
+        // hvis er skjønne forEach riktig, så plukke den ut ett og ett element og gir da parametere item, og så exectue den item.remove()
         allTodoItems.forEach(item => {
             item.remove()
         })
